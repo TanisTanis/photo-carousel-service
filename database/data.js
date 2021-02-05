@@ -50,5 +50,6 @@ Photo.belongsTo(Item, {foreignKey: 'photoId', targetKey: 'listingId'});
 
 module.exports = {
   Item,
-  Photo
+  Photo,
+  sequelize
 };
