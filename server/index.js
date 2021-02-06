@@ -3,10 +3,28 @@ const path = require('path');
 const cors = require('cors');
 const compression = require('compression');
 const { getPhotos } = require('../database/index.js');
+const { Item, Photo } = require('../database/data');
 
 const app = express();
 const PORT = process.env.PORT || 3003;
 const PUBLIC_DIR = path.resolve(__dirname, '..', 'public');
+
+Item.sync()
+  .then(() => {
+    console.log('Added Item table to postgres!');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+
+Photo.sync()
+  .then(() => {
+    console.log('Added Photo table to postgres!');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 app.use(compression());
 app.use(cors());
