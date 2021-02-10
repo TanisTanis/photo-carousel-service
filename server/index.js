@@ -3,8 +3,8 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const compression = require('compression');
-const { getPhotos } = require('../database/index.js');
-const { Item, Photo, sequelize } = require('../database/data');
+// const { getPhotos } = require('../database/index.js');
+// const { Item, Photo, sequelize } = require('../database/data');
 const pool = require('./pool');
 
 const app = express();
