@@ -23,6 +23,10 @@ const Photo = sequelize.define('Photo', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
+  orderId: {
+    type: DataTypes.INTEGER,
+    allowNull:false
+  },
   thumbnailUrl: {
     type: DataTypes.STRING,
     allowNull: false

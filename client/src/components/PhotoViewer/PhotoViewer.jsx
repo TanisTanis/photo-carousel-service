@@ -27,12 +27,12 @@ function PhotoViewer(props) {
   }, [selectedPhoto]);
 
   const prevPhoto = () => {
-    const newSelected = photos.find((photo) => photo.id === selectedPhoto.id - 1);
+    const newSelected = photos.find((photo) => photo.orderid === selectedPhoto.orderid - 1);
     setSelectedPhoto(newSelected);
   };
 
   const nextPhoto = () => {
-    const newSelected = photos.find((photo) => photo.id === selectedPhoto.id + 1);
+    const newSelected = photos.find((photo) => photo.orderid === selectedPhoto.orderid + 1);
     setSelectedPhoto(newSelected);
   };
 
@@ -51,7 +51,7 @@ function PhotoViewer(props) {
           </Button>
         </div>
         <div>
-          <p className={classes.text}>{`${selectedPhoto.id} / ${photos.length}`}</p>
+          <p className={classes.text}>{`${selectedPhoto.orderid} / ${photos.length}`}</p>
         </div>
         <div className={classes.row}>
           <IconButton border={false} large={false}>
@@ -70,14 +70,14 @@ function PhotoViewer(props) {
             border
             large
             handleClick={prevPhoto}
-            isHidden={selectedPhoto.id === 1}
+            isHidden={selectedPhoto.orderid === 1}
           >
             <IoIosArrowBack className={classes.icon} />
           </IconButton>
         </div>
         <div className={classes.centerhorizontal}>
           <img
-            src={selectedPhoto.imageUrl}
+            src={selectedPhoto.imageurl}
             alt={selectedPhoto.description}
             className={`${classes.photo} ${photoFade}`}
           />
@@ -88,7 +88,7 @@ function PhotoViewer(props) {
             border
             large
             handleClick={nextPhoto}
-            isHidden={selectedPhoto.id === photos.length}
+            isHidden={selectedPhoto.orderid === photos.length}
           >
             <IoIosArrowForward className={classes.icon} />
           </IconButton>
