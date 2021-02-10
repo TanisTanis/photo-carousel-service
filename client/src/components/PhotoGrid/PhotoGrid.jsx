@@ -17,8 +17,7 @@ function PhotoGrid() {
   const photosLoaded = photos.length > 0;
 
   const getPhotos = () => {
-    const propertyId = new URLSearchParams(window.location.search).get('propertyId') || '30506101';
-
+    const propertyId = new URLSearchParams(window.location.search).get('propertyId') || '1506101';
     axios.get(`/api/home/${propertyId}/photos`)
       .then((response) => {
         setPhotos(response.data[0].photos);
@@ -37,7 +36,7 @@ function PhotoGrid() {
       new Promise((resolve, reject) => {
         const img = new Image();
 
-        img.src = src.imageUrl;
+        img.src = src.imageurl;
         img.onload = resolve();
         img.onerror = reject();
       })

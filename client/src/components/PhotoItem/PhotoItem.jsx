@@ -6,12 +6,12 @@ import classes from './PhotoItem.module.css';
 function PhotoItem(props) {
   const { photo, setSelectedPhoto, setModalOpen } = props;
   const {
-    id, thumbnailUrl, description,
+    orderid, thumbnailurl, description,
   } = photo;
   const assignedClasses = () => (`${classes.photo}
-          ${id === 1 ? classes.photoitemleft : ''}
-          ${id === 4 ? classes.photoitemtopright : ''}
-          ${id === 5 ? classes.photoitembottomright : ''}`);
+          ${orderid === 1 ? classes.photoitemleft : ''}
+          ${orderid === 4 ? classes.photoitemtopright : ''}
+          ${orderid === 5 ? classes.photoitembottomright : ''}`);
 
   const handleClick = () => {
     setSelectedPhoto(photo);
@@ -21,9 +21,9 @@ function PhotoItem(props) {
   return (
     <button type="button" onClick={handleClick} className={classes.photobtn}>
       <img
-        src={thumbnailUrl}
+        src={thumbnailurl}
         alt={description}
-        photo-id={id}
+        photo-id={orderid}
         className={assignedClasses()}
       />
     </button>
@@ -43,3 +43,28 @@ PhotoItem.propTypes = {
   setSelectedPhoto: PropTypes.func.isRequired,
   setModalOpen: PropTypes.func.isRequired,
 };
+
+
+// const {
+//   id, thumbnailUrl, description,
+// } = photo;
+// const assignedClasses = () => (`${classes.photo}
+//         ${id === 1 ? classes.photoitemleft : ''}
+//         ${id === 4 ? classes.photoitemtopright : ''}
+//         ${id === 5 ? classes.photoitembottomright : ''}`);
+
+// const handleClick = () => {
+//   setSelectedPhoto(photo);
+//   setModalOpen(true);
+// };
+
+// return (
+//   <button type="button" onClick={handleClick} className={classes.photobtn}>
+//     <img
+//       src={thumbnailUrl}
+//       alt={description}
+//       photo-id={id}
+//       className={assignedClasses()}
+//     />
+//   </button>
+// );

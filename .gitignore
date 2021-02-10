@@ -2,3 +2,5 @@ node_modules
 bundle.js
 photos
 database/generated
+newrelic.js
+newrelic_agent.log

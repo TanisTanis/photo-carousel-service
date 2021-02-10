@@ -1,30 +1,15 @@
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const compression = require('compression');
 const { getPhotos } = require('../database/index.js');
-const { Item, Photo } = require('../database/data');
+const { Item, Photo, sequelize } = require('../database/data');
+const pool = require('./pool');
 
 const app = express();
 const PORT = process.env.PORT || 3003;
 const PUBLIC_DIR = path.resolve(__dirname, '..', 'public');
-
-Item.sync()
-  .then(() => {
-    console.log('Added Item table to postgres!');
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-
-Photo.sync()
-  .then(() => {
-    console.log('Added Photo table to postgres!');
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 app.use(compression());
 app.use(cors());
@@ -40,12 +25,19 @@ app.use(express.static(PUBLIC_DIR));
 
 app.get('/api/home/:id/photos', (req, res) => {
   const { id } = req.params;
-  getPhotos(id)
-    .then((results) => res
-      .send(results)
-      .status(200)
-      .set('Cache-Control', 'public, max-age=31557600'))
-    .catch(() => res.status(500));
+  pool.query(`SELECT * FROM photos WHERE photoid=${id}`)
+    .then((data) => {
+      const response = [{
+        listingId: id,
+        photos: data.rows
+      }];
+      res.send(response);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send(500);
+    });
+
 });
 
 app.listen(PORT, () => {
