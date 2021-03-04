@@ -5,3 +5,20 @@
 ### An example page from this microservice
 <img src="./assets/PhotoGallery.gif"/>
 
+## Project Overview
+
+<ul>
+  <li>Took a photo-gallery microservice for an application similar to Airbnb that was originally written with around 100 different records/pages and scaled it to    handle 10 million different primary listings, with 50 million photo listings.</li>
+  <li>Transitioned database from MongoDB to PostgreSQL in order to have a relational database</li>
+  <li>Deployed to EC2 and tested web performance</li>
+</ul>
+
+### Accomplishments
+
+<ul>
+  <li>Reduced PostgreSQL query times of a table with 50 million photo records from ~40 seconds to ~1ms by indexing</li>
+  <li>Horizontally scaled by running up to 4 EC2 instances of the service</li>
+  <li>Used NGINX as a load balancer to between the four instances</li>
+</ul>
+
+Through all these steps, was able to scale the microservice to handle up to 90,000 requests per minute. (1500 requests per second)
