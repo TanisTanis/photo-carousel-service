@@ -18,7 +18,9 @@
 <ul>
   <li>Reduced PostgreSQL query times of a table with 50 million photo records from ~40 seconds to ~1ms by indexing</li>
   <li>Horizontally scaled by running up to 4 EC2 instances of the service</li>
-  <li>Used NGINX as a load balancer to between the four instances</li>
+  <li>Used NGINX as a load balancer between the four instances</li>
 </ul>
 
-Through all these steps, was able to scale the microservice to handle up to 90,000 requests per minute. (1500 requests per second)
+#### Through all these steps, was able to scale the microservice to handle up to 90,000 requests per minute. (1500 requests per second)
+
+<img src="./assets/1500rpsTest.png"/>
