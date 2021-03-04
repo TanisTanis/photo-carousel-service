@@ -2,4 +2,6 @@
 
 # Photo Gallery Service
 
+### An example page from this microservice
 <img src="./assets/PhotoGallery.gif"/>
+
